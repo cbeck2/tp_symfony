@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>{{ showLayoutName }}! ✅</h1>
+    <table border="1">
+        <tr>
+            <th>Titre</th>
+            <th>Contenue</th>
+            <th>Auteur</th>
+            <th>Email</th>
+            <th>Categorie</th>
+            <th>Prix</th>
+            <th>Status</th>
+            <th>Creer le</th>
+            <th>Publie le</th>
+        </tr>
+        {% for allAdvertShow in advertByCategory %}
+                {% if allAdvertShow.state != 'rejected' and allAdvertShow.state != 'draft' %}
+                <tr>
+                    <td>{{ allAdvertShow.title }}</td>
+                    <td>{{ allAdvertShow.content }}</td>
+                    <td>{{ allAdvertShow.author }}</td>
+                    <td>{{ allAdvertShow.email }}</td>
+                    <td>{{ allAdvertShow.getCategory().getName() }}</td>
+                    <td>{{ allAdvertShow.price }}</td>
+                    <td>{{ allAdvertShow.state }}</td>
+                    <td>{{ allAdvertShow.createdAt|date("m/d/y",false)}}</td>
+                    <td>{{ allAdvertShow.publishedAt|date("m/d/y",false)}}</td>
+                    <td>
+                <a href="/show/advert/{{ allAdvertShow.getId() }}"><button>Afficher</button></a></td>
+        </tr>
+                </tr>
+            {% endif %}
+            {% endfor %}
+    </table>
+
+</div>
+{% endblock %}

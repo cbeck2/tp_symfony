@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello FlyController!{% endblock %}
+
+{% block body %}
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
+
+    <div class="example-wrapper">
+        <h1> {{ showLayoutName }}! ✅</h1>
+        <table border="1">
+            <tr>
+            <th>Titre</th>
+            <th>Contenue</th>
+            <th>Auteur</th>
+            <th>Email</th>
+            <th>Categorie</th>
+            <th>Prix</th>
+            <th>Status</th>
+            <th>Creer le</th>
+            <th>Publie le</th>
+            </tr>
+
+            <tr>
+                <td>{{ advert.getTitle() }}</td>
+                <td>{{ advert.getContent()}}</td>
+                <td>{{ advert.getAuthor() }}</td>
+                <td>{{ advert.getEmail() }}</td>
+                <td>{{ advert.getCategory().getName() }}</td>
+                <td>{{ advert.getPrice() }}</td>
+                <td>{{ advert.getState() }}</td>
+                <td>{{ advert.getCreatedAt()|date("m/d/y",false) }}</td>
+                <td>{{ advert.getPublishedAt()|date("m/d/y",false) }}</td>
+
+                <td>
+                    <a href="/"><button>
+                            Menu Principal
+                        </button>
+                    </a>
+                </td>
+
+            </tr>
+
+        </table>
+    </div>
+{% endblock %}
